@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<otrs_package version="1.0">
+    <CVS>$Id$</CVS>
+    <Name>DynamicFieldITSMConfigItem</Name>
+    <Version>1.1.80</Version>
+    <Framework>5.0.x</Framework>
+    <Vendor>c.a.p.e. IT GmbH</Vendor>
+    <URL>http://www.cape-it.de/</URL>
+    <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
+    <Description Lang="en">DynamicField backend to provide access to OTRS CMDB</Description>
+    <Description Lang="de">DynamicField-Backend zur Bereitstellung des Zugangs zur OTRS-CMDB</Description>
+    <BuildDate>?</BuildDate>
+    <BuildHost>?</BuildHost>
+    <PackageRequired Version="5.0.1">ITSMConfigurationManagement</PackageRequired>
+    <Filelist>
+        <File Permission="644" Location="Kernel/Config/Files/DynamicFieldITSMConfigItem.xml" />
+        <File Permission="644" Location="Kernel/Language/de_DynamicFieldITSMConfigItem.pm" />
+        <File Permission="644" Location="Kernel/Modules/AdminDynamicFieldITSMConfigItem.pm" />
+        <File Permission="644" Location="Kernel/Modules/DynamicFieldITSMConfigItemAJAXHandler.pm" />
+        <File Permission="644" Location="Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldITSMConfigItem.tt" />
+        <File Permission="644" Location="Kernel/System/DynamicField/Driver/ITSMConfigItemReference.pm" />
+        <File Permission="644" Location="Kernel/System/Ticket/Event/ITSMConfigItemLinkAdd.pm" />
+        <File Permission="644" Location="doc/CHANGES_DynamicFieldITSMConfigItem.md" />
+        <File Permission="644" Location="doc/en/DynamicFieldITSMConfigItem.pdf" />
+        <File Permission="644" Location="var/packagesetup/DynamicFieldITSMConfigItem.pm" />
+    </Filelist>
+    <DatabaseInstall>
+    </DatabaseInstall>
+    <DatabaseReinstall>
+    </DatabaseReinstall>
+    <DatabaseUpgrade>
+    </DatabaseUpgrade>
+    <DatabaseUninstall>
+    </DatabaseUninstall>
+
+    <CodeInstall Type="post"><![CDATA[
+    $Kernel::OM->Get('var::packagesetup::DynamicFieldITSMConfigItem')->CodeInstall();
+    ]]></CodeInstall>
+
+    <CodeReinstall Type="post"><![CDATA[
+    $Kernel::OM->Get('var::packagesetup::DynamicFieldITSMConfigItem')->CodeReinstall();
+    ]]></CodeReinstall>
+
+    <CodeUpgrade Type="post"><![CDATA[
+    $Kernel::OM->Get('var::packagesetup::DynamicFieldITSMConfigItem')->CodeUpgrade();
+    ]]></CodeUpgrade>
+
+    <CodeUpgrade Type="post" Version="4.99.80"><![CDATA[
+    $Kernel::OM->Get('var::packagesetup::DynamicFieldITSMConfigItem')->CodeUpgrade_5();
+    ]]></CodeUpgrade>
+
+    <CodeUninstall Type="pre"><![CDATA[
+    $Kernel::OM->Get('var::packagesetup::DynamicFieldITSMConfigItem')->CodeUninstall();
+    ]]></CodeUninstall>
+
+    <IntroInstall Type="pre" Title="Install Information" Lang="en">
+        <![CDATA[
+            <br/>
+            WELCOME<br/>
+        <br/>
+            You are about to install DynamicFieldITSMConfigItem for OTRS 5.0.x .<br/>
+        <br/>
+        <strong>Required Packages:</strong>
+        <br/>
+        <ul>
+            <li>ITSMConfigurationManagement 5.0.1</li>
+        </ul>
+        <br/>
+        <br/>
+            c.a.p.e. IT ...easy.<br/>
+        <br/>
+        <br/>
+        ]]>
+    </IntroInstall>
+    <IntroInstall Type="post" Title="Install Information" Lang="en">
+        <![CDATA[
+            <br/>
+            The package has been installed.<br/>
+        <br/>
+        <strong>Important Advice:</strong>
+        <br/>
+        <br/>
+            It is recommended to delete the OTRS-cache and perform a configuration rebuild before you continue the use of this OTRS installation.
+            <br/>
+        <br/>
+            To link tickets with relevant config items during DynamicFieldUpdate activate the event Ticket::EventModulePost###ITSMConfigItemLinkAdd.
+            <br/>
+        <br/>
+            c.a.p.e. IT ...easy.<br/>
+        <br/>
+        <br/>
+        ]]>
+    </IntroInstall>
+    <IntroUpgrade Type="pre" Title="Upgrade Information" Lang="en">
+        <![CDATA[
+            <br/>
+            WELCOME<br/>
+        <br/>
+            You are about to upgrade DynamicFieldITSMConfigItem for OTRS.<br/>
+        <br/>
+        <br/>
+            c.a.p.e. IT ...easy.<br/>
+        <br/>
+        <br/>
+        ]]>
+    </IntroUpgrade>
+    <IntroUpgrade Type="post" Title="Upgrade Information" Lang="en">
+        <![CDATA[
+            <br/>
+            The package has been upgraded.<br/>
+        <br/>
+        <strong>Important Advice:</strong>
+        <br/>
+        <br/>
+            It is recommended to delete the OTRS-cache and perform a configuration rebuild before you continue the use of this OTRS installation.
+            <br/>
+        <br/>
+            To link tickets with relevant config items during DynamicFieldUpdate activate the event Ticket::EventModulePost###ITSMConfigItemLinkAdd.
+            <br/>
+        <br/>            
+            c.a.p.e. IT ...easy.<br/>
+        <br/>
+        <br/>
+        ]]>
+    </IntroUpgrade>
+    <IntroUninstall Type="pre" Title="Uninstall Information" Lang="en">
+        <![CDATA[
+        <br/>
+        WELCOME<br/>
+        <br/>
+        You are about to UNINSTALL DynamicFieldITSMConfigItem for OTRS.<br/>
+        <br/>
+        <strong>Important Advice:</strong>
+        <br/>
+        <br/>
+        All dynamic fields of type ITSMConfigItem will be removed with all related ticket values. Links from tickets to config items will NOT be removed.
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        c.a.p.e. IT ...easy.<br/>
+        <br/>
+        <br/>
+        ]]>
+    </IntroUninstall>
+    <IntroUninstall Type="post" Title="Uninstall Information" Lang="en">
+        <![CDATA[
+            <br/>
+            The package has been uninstalled.<br/>
+        <br/>
+        <br/>
+            c.a.p.e. IT ...easy.<br/>
+        <br/>
+        <br/>
+        ]]>
+    </IntroUninstall>
+</otrs_package>
